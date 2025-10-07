@@ -3,6 +3,7 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import NavBarContainer from "./components/NavBarContainer";
 import { BrowserRouter, Routes, Route } from "react-router";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/category/:id" element={<ItemListContainer />} />
         <Route path="/prod/:id" element={<ItemDetailContainer />} />
       </Routes>
+      <Toaster />
     </BrowserRouter>
   );
 }
