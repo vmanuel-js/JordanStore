@@ -2,19 +2,10 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import CartWidget from "./CartWidget";
 import { NavLink, Link } from "react-router";
-import { useEffect, useState } from "react";
 
-function NavBar() {
-  const [categories, setCategories] = useState([]);
-  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products/categories")
-      .then((response) => response.json())
-      .then((data) => setCategories(data));
-  }, []);
-
+function NavBar({ categories }) {
   return (
     <Navbar expand="lg" className="bg-primary">
       <Container>
@@ -47,11 +38,12 @@ function NavBar() {
                   to={`/category/${category}`}
                   key={category}
                 >
-                  {category && capitalize(category)}
+                  {category}
                 </NavDropdown.Item>
               ))}
             </NavDropdown>
           </Nav>
+          <CartWidget></CartWidget>
         </Navbar.Collapse>
       </Container>
     </Navbar>
