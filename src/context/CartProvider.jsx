@@ -1,5 +1,6 @@
 import { CartContext } from "./CartContext.js";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 function CartProvider({ children }) {
   const [carrito, setCarrito] = useState([]);
@@ -9,6 +10,7 @@ function CartProvider({ children }) {
       return;
     }
     setCarrito([...carrito, item]);
+    toast.success("¡Se agregó tu producto al carrito!");
   };
 
   const getQuantity = () => {
