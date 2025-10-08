@@ -14,6 +14,13 @@ function CartContainer() {
     return (
       <div className="mt-5 text-center">
         <p>No tienes prodcutos en el carro😔</p>
+        <Button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Mira nuestros productos!
+        </Button>
       </div>
     );
   }
