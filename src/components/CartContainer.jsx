@@ -2,11 +2,13 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import Table from "react-bootstrap/Table";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router";
 
 function CartContainer() {
   const { carrito, getTotal, getProductFinalPrice } = useContext(CartContext);
   const total = getTotal();
   const subtotal = getProductFinalPrice();
+  const navigate = useNavigate();
 
   if (carrito.length === 0) {
     return (
@@ -41,7 +43,9 @@ function CartContainer() {
         </tbody>
       </Table>
       <h2 className="mt-3">Total: PEN. {total}</h2>
-      <Button className="w-50 mt-3">Checkout</Button>
+      <Button className="w-50 mt-3" onClick={() => navigate("/checkout")}>
+        Checkout
+      </Button>
     </div>
   );
 }
