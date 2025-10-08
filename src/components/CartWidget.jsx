@@ -11,7 +11,8 @@ function CartWidget() {
 
   return (
     <Button variant="dark" onClick={() => navigate("/cart")}>
-      Productos <Badge bg="secondary">{quantity > 20 ? "+20" : quantity}</Badge>
+      Productos{" "}
+      <Badge bg="secondary">{quantity > 100 ? "+100" : quantity}</Badge>
     </Button>
   );
 }

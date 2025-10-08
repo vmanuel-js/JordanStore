@@ -4,24 +4,30 @@ import { useState } from "react";
 function CartProvider({ children }) {
   const [carrito, setCarrito] = useState([]);
 
-  const addCart = (prod) => {
-    if (carrito.some((item) => item.id === prod.id)) {
+  const addToCart = (item) => {
+    if (carrito.some((prod) => prod.id === item.id)) {
       return;
     }
-    setCarrito([...carrito, prod]);
+    setCarrito([...carrito, item]);
   };
 
   const getQuantity = () => {
-    const quantities = carrito.map((prod) => prod.count);
+    const quantities = carrito.map((item) => item.count);
     const total = quantities.reduce((acc, current) => acc + current, 0);
+    return total;
+  };
 
+  const getTotal = () => {
+    const precios = carrito.map((item) => item.count * item.price);
+    const total = precios.reduce((acc, current) => acc + current, 0);
     return total;
   };
 
   const value = {
-    addCart,
+    addToCart,
     getQuantity,
     carrito,
+    getTotal,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

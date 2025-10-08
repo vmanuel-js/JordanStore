@@ -18,7 +18,7 @@ function ItemDetail({ item }) {
             PEN. {item?.price}
           </p>
           <p>{item?.description}</p>
-          <ItemCount></ItemCount>
+          <ItemCount item={item}></ItemCount>
         </Col>
       </Row>
     </Container>
