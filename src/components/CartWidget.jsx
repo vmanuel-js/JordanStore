@@ -1,10 +1,17 @@
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import { useNavigate } from "react-router";
 
 function CartWidget() {
+  const { getQuantity } = useContext(CartContext);
+  const quantity = getQuantity();
+  const navigate = useNavigate();
+
   return (
-    <Button variant="dark">
-      Productos <Badge bg="secondary">9</Badge>
+    <Button variant="dark" onClick={() => navigate("/cart")}>
+      Productos <Badge bg="secondary">{quantity > 20 ? "+20" : quantity}</Badge>
     </Button>
   );
 }
