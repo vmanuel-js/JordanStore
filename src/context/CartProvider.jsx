@@ -23,11 +23,17 @@ function CartProvider({ children }) {
     return total;
   };
 
+  const getProductFinalPrice = () => {
+    const precio = carrito.map((item) => item.count * item.price);
+    return precio;
+  };
+
   const value = {
     addToCart,
     getQuantity,
     carrito,
     getTotal,
+    getProductFinalPrice,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
