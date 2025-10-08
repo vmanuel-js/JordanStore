@@ -11,10 +11,10 @@ function ItemDetail({ item }) {
     <Container className="mt-4">
       <Row>
         <Col>
-          <Image src={item?.image}></Image>
+          <Image src={item?.image} style={{ height: "800px" }}></Image>
         </Col>
         <Col>
-          <h2>{item?.title}</h2>
+          <h2>{item?.name}</h2>
           <p style={{ color: "#707072", fontSize: "20px" }}>
             {item?.category && capitalize(item.category)}
           </p>

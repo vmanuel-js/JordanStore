@@ -2,15 +2,23 @@ import PacmanLoader from "react-spinners/PacmanLoader";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import ItemDetail from "./ItemDetail";
+import { getOneGarment } from "../firebase/db";
 
 function ItemDetailContainer() {
   const [part, setPart] = useState();
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${id}`)
-      .then((response) => response.json())
-      .then((data) => setPart(data));
+    const fetchPart = async () => {
+      try {
+        const data = await getOneGarment(id);
+        setPart(data);
+      } catch (error) {
+        console.error("Ha ocurrido un error: ", error);
+      }
+    };
+
+    fetchPart();
   }, [id]);
 
   if (!part) {

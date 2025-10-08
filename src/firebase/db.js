@@ -4,9 +4,10 @@ import {
   getDocs,
   query,
   where,
+  doc,
+  getDoc,
 } from "firebase/firestore";
 import { app } from "./config";
-import { data } from "react-router";
 
 const db = getFirestore(app);
 
@@ -43,4 +44,15 @@ export const getGarmentByCategory = async (category) => {
   });
 
   return garment;
+};
+
+export const getOneGarment = async (id) => {
+  const docRef = doc(db, "clothes", id);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    return { ...docSnap.data(), id: docSnap.id };
+  } else {
+    return false;
+  }
 };
