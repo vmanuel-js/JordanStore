@@ -35,10 +35,10 @@ function NavBar({ categories }) {
               {categories.map((category) => (
                 <NavDropdown.Item
                   as={NavLink}
-                  to={`/category/${category}`}
-                  key={category}
+                  to={`/category/${category.category}`}
+                  key={category.id}
                 >
-                  {category}
+                  {category.category}
                 </NavDropdown.Item>
               ))}
             </NavDropdown>

@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
+import { getCategoriesClothes } from "../firebase/db";
 import NavBar from "./NavBar";
 
 function NavBarContainer() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products/categories")
-      .then((response) => response.json())
-      .then((data) => setCategories(data));
+    const fetchCategoriesClothes = async () => {
+      try {
+        const data = await getCategoriesClothes();
+        setCategories(data);
+      } catch (error) {
+        console.error("Ha ocurrido un error: ", error);
+      }
+    };
+
+    fetchCategoriesClothes();
   }, []);
 
   return <NavBar categories={categories} />;
