@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import { withLoading } from "../hoc/withLoading";
 import { useParams } from "react-router";
+import { getClothes } from "../firebase/db";
 
 const ItemListLoading = withLoading(ItemList);
 
@@ -10,12 +11,16 @@ function ItemListContainer() {
   const { id } = useParams();
 
   useEffect(() => {
-    const productFetch = "https://fakestoreapi.com/products";
-    const productCategoryFetch = `https://fakestoreapi.com/products/category/${id}`;
+    const fetchClothes = async () => {
+      try {
+        const data = await getClothes(id);
+        setInventory(data);
+      } catch (error) {
+        console.error("Ha ocurrido un error: ", error);
+      }
+    };
 
-    fetch(id ? productCategoryFetch : productFetch)
-      .then((response) => response.json())
-      .then((data) => setInventory(data));
+    fetchClothes();
   }, [id]);
 
   return <ItemListLoading products={inventory}></ItemListLoading>;

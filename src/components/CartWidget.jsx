@@ -3,9 +3,8 @@ import Button from "react-bootstrap/Button";
 
 function CartWidget() {
   return (
-    <Button variant="primary">
-      Profile <Badge bg="secondary">9</Badge>
-      <span className="visually-hidden">unread messages</span>
+    <Button variant="dark">
+      Productos <Badge bg="secondary">9</Badge>
     </Button>
   );
 }

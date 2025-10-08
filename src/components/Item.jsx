@@ -9,7 +9,7 @@ function Item({ prods }) {
       <Card style={{ border: "0.5px solid #000" }} className="h-100">
         <Card.Img className="p-5" variant="top" src={prods.image} />
         <Card.Body>
-          <Card.Title style={{ fontSize: "18px" }}>{prods.title}</Card.Title>
+          <Card.Title style={{ fontSize: "18px" }}>{prods.name}</Card.Title>
           <Card.Text style={{ fontSize: "14px" }}>
             {prods.description}
           </Card.Text>
