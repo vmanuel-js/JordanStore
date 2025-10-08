@@ -5,8 +5,6 @@ import Row from "react-bootstrap/Row";
 import ItemCount from "./ItemCount";
 
 function ItemDetail({ item }) {
-  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-
   return (
     <Container className="mt-4">
       <Row>
@@ -15,9 +13,7 @@ function ItemDetail({ item }) {
         </Col>
         <Col>
           <h2>{item?.name}</h2>
-          <p style={{ color: "#707072", fontSize: "20px" }}>
-            {item?.category && capitalize(item.category)}
-          </p>
+          <p style={{ color: "#707072", fontSize: "20px" }}>{item?.category}</p>
           <p style={{ fontWeight: "bold", fontSize: "30px" }}>
             PEN. {item?.price}
           </p>

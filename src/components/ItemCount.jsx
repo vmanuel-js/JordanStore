@@ -25,14 +25,14 @@ function ItemCount() {
           +
         </Button>
         <p style={{ fontSize: "20px" }}>{count}</p>
-        <Button onClick={handleSub} variant="danger">
+        <Button onClick={handleSub} variant="danger" disabled={count === 0}>
           -
         </Button>
       </div>
       <Button
         style={{ fontSize: "20px" }}
-        onClick={handleSub}
         variant="primary"
+        disabled={count === 0}
       >
         Agregar al carrito 🛒
       </Button>
