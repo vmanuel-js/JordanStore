@@ -3,6 +3,7 @@ import { CartContext } from "../context/CartContext";
 import Table from "react-bootstrap/Table";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 function CartContainer() {
   const {
@@ -12,6 +13,7 @@ function CartContainer() {
     deleteProduct,
     addQuantity,
     minusQuantity,
+    clearCart,
   } = useContext(CartContext);
   const total = getTotal();
   const subtotal = getProductFinalPrice();
@@ -77,6 +79,18 @@ function CartContainer() {
           ))}
         </tbody>
       </Table>
+      <div className="d-flex gap-3">
+        <p>Borrar productos del carrito:</p>
+        <Button
+          variant="danger"
+          onClick={() => {
+            clearCart();
+            toast.success("Carrito vaciado correctamente!");
+          }}
+        >
+          🧹
+        </Button>
+      </div>
       <h2 className="mt-3">Total: PEN. {total}</h2>
       <Button className="w-50 mt-3" onClick={() => navigate("/checkout")}>
         Checkout
