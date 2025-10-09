@@ -5,7 +5,14 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
 
 function CartContainer() {
-  const { carrito, getTotal, getProductFinalPrice } = useContext(CartContext);
+  const {
+    carrito,
+    getTotal,
+    getProductFinalPrice,
+    deleteProduct,
+    addQuantity,
+    minusQuantity,
+  } = useContext(CartContext);
   const total = getTotal();
   const subtotal = getProductFinalPrice();
   const navigate = useNavigate();
@@ -35,6 +42,7 @@ function CartContainer() {
             <th>Cantidad</th>
             <th>Precio</th>
             <th>Subtotal</th>
+            <th>Borrar Item</th>
           </tr>
         </thead>
         <tbody>
@@ -45,6 +53,26 @@ function CartContainer() {
               <td>{prod.count}</td>
               <td>{prod.price}</td>
               <td>{subtotal[i]}</td>
+              <td className="d-flex justify-content-between">
+                <Button
+                  variant="outline-info"
+                  onClick={() => addQuantity(prod.id)}
+                >
+                  ➕
+                </Button>
+                <Button
+                  variant="outline-danger"
+                  onClick={() => minusQuantity(prod.id)}
+                >
+                  ➖
+                </Button>
+                <Button
+                  variant="outline-success"
+                  onClick={() => deleteProduct(prod.id)}
+                >
+                  🗑️
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>

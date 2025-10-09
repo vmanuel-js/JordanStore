@@ -62,12 +62,9 @@ export const getOneGarment = async (id) => {
 export const createOrder = async (order) => {
   try {
     const docRef = await addDoc(collection(db, "orders"), order);
-    toast.success(
-      `Gracias por su compra en JordanStore, El ID de su orden es: ${docRef.id}`
-    );
-    return true;
+    return { success: true, id: docRef.id };
   } catch (error) {
     toast.error(`Ocurrió un error: ${error.code}}`);
-    return false;
+    return { success: false };
   }
 };

@@ -4,11 +4,14 @@ import { serverTimestamp } from "firebase/firestore";
 import { createOrder } from "../firebase/db";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router";
+import toast from "react-hot-toast";
 
 function Checkout() {
-  const { getTotal, carrito } = useContext(CartContext);
+  const { getTotal, carrito, clearCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
-  const handleSend = (send) => {
+  const handleSend = async (send) => {
     send.preventDefault();
     const form = send.target;
     const email = form.email.value;
@@ -27,7 +30,18 @@ function Checkout() {
       date: serverTimestamp(),
     };
 
-    createOrder(order);
+    const result = await createOrder(order);
+
+    if (result.success) {
+      clearCart();
+      toast.success(
+        `Gracias por su compra en JordanStore.\nEl ID de su orden es: ${result.id}`,
+        { duration: 4000 }
+      );
+      setTimeout(() => navigate("/"), 2000);
+    } else {
+      toast.error(`✖️ No se pudo procesar su compra.\n${result.error || ""}`);
+    }
   };
 
   return (

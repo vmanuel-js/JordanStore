@@ -30,12 +30,53 @@ function CartProvider({ children }) {
     return precio;
   };
 
+  const deleteProduct = (id) => {
+    const updateCarrito = carrito.filter((item) => item.id !== id);
+    setCarrito(updateCarrito);
+  };
+
+  const addQuantity = (id) => {
+    const updatedCarrito = carrito.map((item) => {
+      if (item.id === id) {
+        toast.success("Producto agregado! 😊");
+        return { ...item, count: item.count + 1 };
+      }
+      return item;
+    });
+    setCarrito(updatedCarrito);
+  };
+
+  const minusQuantity = (id) => {
+    const updatedCarrito = carrito
+      .map((item) => {
+        if (item.id === id) {
+          const newCount = item.count - 1;
+          if (newCount <= 0) {
+            toast.error("Producto eliminado del carrito");
+            return null;
+          }
+          return { ...item, count: item.count - 1 };
+        }
+        return item;
+      })
+      .filter((item) => item !== null);
+    setCarrito(updatedCarrito);
+  };
+
+  const clearCart = () => {
+    setCarrito([]);
+  };
+
   const value = {
     addToCart,
     getQuantity,
     carrito,
     getTotal,
     getProductFinalPrice,
+    deleteProduct,
+    addQuantity,
+    minusQuantity,
+    clearCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
