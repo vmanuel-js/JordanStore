@@ -32,6 +32,7 @@ function CartProvider({ children }) {
 
   const deleteProduct = (id) => {
     const updateCarrito = carrito.filter((item) => item.id !== id);
+    toast.success("Producto eliminado!");
     setCarrito(updateCarrito);
   };
 
@@ -52,9 +53,10 @@ function CartProvider({ children }) {
         if (item.id === id) {
           const newCount = item.count - 1;
           if (newCount <= 0) {
-            toast.error("Producto eliminado del carrito");
+            toast.error("Producto eliminado del carrito con éxito");
             return null;
           }
+          toast.success("Se quitó una unidad");
           return { ...item, count: item.count - 1 };
         }
         return item;

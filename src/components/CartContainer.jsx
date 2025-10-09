@@ -22,7 +22,7 @@ function CartContainer() {
   if (carrito.length === 0) {
     return (
       <div className="mt-5 text-center">
-        <p>No tienes prodcutos en el carro😔</p>
+        <p>No tienes productos en el carro😔</p>
         <Button
           onClick={() => {
             navigate("/");
