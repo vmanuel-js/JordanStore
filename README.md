@@ -1,12 +1,85 @@
-# React + Vite
+# 🛍️ JordanStore
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**JordanStore** es una aplicación web de e-commerce desarrollada con **React.js + Vite**, que permite explorar, filtrar y comprar ropa urbana.  
+Utiliza **Firebase Firestore** para la gestión de productos y órdenes, siguiendo las mejores prácticas del ecosistema de React.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características principales
 
-## Expanding the ESLint configuration
+- 🧭 **Navegación SPA** con React Router.
+- 🔥 **Firebase Firestore** para productos, categorías y órdenes.
+- 🛒 **Carrito de compras global** con Context API.
+- 💬 **Notificaciones en tiempo real** con React Hot Toast.
+- 🕓 **Loaders dinámicos** con react-spinners.
+- ✅ **Formulario de compra validado**, que genera una orden en Firestore.
+- 🎨 **Interfaz moderna y responsiva** con React-Bootstrap.
+- 🧩 **Arquitectura modular y escalable** con separación entre lógica y vista.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ⚙️ Tecnologías utilizadas
+
+| Categoría                      | Tecnologías                     |
+| ------------------------------ | ------------------------------- |
+| **Frontend**                   | React.js 19, Vite               |
+| **Enrutamiento**               | React Router 7                  |
+| **Base de datos**              | Firebase Firestore              |
+| **Estilos y UI**               | React-Bootstrap, Bootstrap 5    |
+| **Estado global**              | Context API                     |
+| **Feedback UX**                | React Hot Toast, React Spinners |
+| **Herramientas de desarrollo** | ESLint, globals, React Refresh  |
+
+---
+
+## 📦 Dependencias principales
+
+Desde el archivo `package.json`:
+
+```json
+"dependencies": {
+  "bootstrap": "^5.3.8",
+  "firebase": "^12.3.0",
+  "react": "^19.1.1",
+  "react-bootstrap": "^2.10.10",
+  "react-dom": "^19.1.1",
+  "react-hot-toast": "^2.6.0",
+  "react-router": "^7.9.1",
+  "react-spinners": "^0.17.0"
+}
+```
+
+---
+
+## 🧭 Rutas principales
+
+| Ruta            | Descripción                       |
+| --------------- | --------------------------------- |
+| `/`             | Lista general de productos        |
+| `/category/:id` | Filtra productos por categoría    |
+| `/prod/:id`     | Muestra el detalle de un producto |
+| `/cart`         | Carrito de compras                |
+| `/checkout`     | Formulario de compra              |
+
+---
+
+## 🧾 Flujo de usuario
+
+1. El usuario accede al catálogo y navega entre categorías.
+2. Visualiza el detalle de un producto y lo agrega al carrito.
+3. Desde el carrito, puede modificar cantidades o eliminar productos.
+4. Completa el formulario de compra y confirma la orden.
+5. La orden se registra en Firebase Firestore con un ID único.
+6. Se muestra una notificación de éxito con react-hot-toast.
+
+---
+
+## 👨‍💻 Autor
+
+Victor Manuel Jordan Solis
+
+Proyecto desarrollado como entrega final del curso de React.js
+
+9/10/2025
+
+Coderhouse
